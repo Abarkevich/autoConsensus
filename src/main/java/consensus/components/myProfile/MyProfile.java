@@ -4,4 +4,6 @@ import core.components.Component;
 
 public class MyProfile extends Component{
 
+    public static final
+
 }
