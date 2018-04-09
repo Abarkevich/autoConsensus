@@ -26,11 +26,10 @@ public class CreateSingleDemo extends Component {
     public static final SelenideElement CUSTOM_BTN = $(By.xpath("//input[@id='step7_checkbox_custombutton']"));
     public static final SelenideElement SIGN_UP_DROPDOWN_LIST_BTN = $(By.xpath("//select[@id='step7_conversionscreenoptions_dem']']")); //selectOptionByValue or selectOption
     public static final SelenideElement SHAREDEMO_BTN = $(By.xpath("//select[@id='share-popup']")); //selectOptionByValue or selectOption
-
-    public static final SelenideElement TransparentFlatDesign_BTN = $(By.name("choosetheme2"));
-    public static final SelenideElement UPLOADBACKGROUNDIMAGE_BTN = $(By.id("backgroundtheme_dem"));
-    public static final SelenideElement FLAT_DESIGN_BTN = $(By.id("choosetheme1"));
-    public static final SelenideElement WATCH_DEMO_BTN = $(By.id("watch-demo"));
-    public static final SelenideElement FINISHED_BTN = $(By.id("btn-finished"));
+    public static final SelenideElement TransparentFlatDesign_BTN = $(By.xpath("//div[@id='uniform-choosetheme2']"));
+    public static final SelenideElement UPLOADBACKGROUNDIMAGE_BTN = $(By.xpath("//input[@id='backgroundtheme_dem']"));
+    public static final SelenideElement FLAT_DESIGN_BTN = $(By.xpath("//input[@id='choosetheme1']"));
+    public static final SelenideElement WATCH_DEMO_BTN = $(By.xpath("//a[contains(.,'Watch the Demo')]"));
+    public static final SelenideElement FINISHED_BTN = $(By.xpath("//a{contains(.,'Finished!')}"));
     public static final SelenideElement SEND_DEMO_BTN = $(By.xpath("//a[contains('Send Demo')]"));
 }
