@@ -21,7 +21,7 @@ public class LoginPage extends Component{
 
 
     public void login(String username, String password){
-        open("https://www.goconsensus.com/app/");
+        open("https://helix.goconsensus.com/app/"); // https://www.goconsensus.com/app ПРОД ЛИНК
         waitUntilLoaded();
         USERNAME.sendKeys(username);
         PASSWORD.sendKeys(password);

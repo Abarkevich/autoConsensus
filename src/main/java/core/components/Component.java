@@ -78,4 +78,5 @@ public abstract class Component implements Fillable {
             LOG.log(Level.WARNING, "Load indicator list is empty for component " + this.getClass().getSimpleName() + ". There's nothing to wait until loaded");
         }
     }
-}
+
+    }
