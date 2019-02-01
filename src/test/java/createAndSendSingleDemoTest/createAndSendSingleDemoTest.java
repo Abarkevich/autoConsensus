@@ -11,7 +11,7 @@ import static consensus.components.Initializer.loginPage;
 
 public class createAndSendSingleDemoTest  extends BaseTest {
 
-    private String demoName = "SS AB SNGL 02 06 AUTOMATED #1";
+    private String demoName = "SS AB SNGL 15 06 AUTOMATED #3";
     private String pathToVideo = "C:\\Users\\user\\Pictures\\videos\\2mb0013.mp4";
     private String pathToDocSNGL = "C:\\Users\\user\\Pictures\\documents\\doc.doc";
     private String orgName = "SpiralScout";
@@ -55,6 +55,7 @@ public class createAndSendSingleDemoTest  extends BaseTest {
         Initializer.createSingleDemo.clickContinue();
         Initializer.createSingleDemo.SendSingleDemo_BTN.click();
         Initializer.sendDemo.SendDemoViaCreatedDemo(orgName, recEmail, firstRecName, lastRecName, titleRec);
+        Initializer.trackDemosSentPage.findSendFirstTimeDemoByName(demoName);
 
 
     }

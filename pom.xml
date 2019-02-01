@@ -73,6 +73,12 @@
             <artifactId>testng</artifactId>
             <version>6.11</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>3.1.1</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- required for reportng start-->
         <dependency>
@@ -106,6 +112,12 @@
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-script</artifactId>
             <version>v1-rev97-1.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

@@ -10,4 +10,7 @@ public class ConfigProperties {
     public static final String APPLICATION_NAME = "application.name";
     public static final String DEPLOYMENT_CONTEXT = "deployment.context";
     public static final String APPLICATION_CONTEXT = "application.context";
+    public static final String API_URL = "api.url";
+
+
 }

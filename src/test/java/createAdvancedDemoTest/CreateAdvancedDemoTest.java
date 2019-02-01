@@ -6,6 +6,8 @@ import consensus.components.Initializer;
 import core.BaseTest;
 import core.utilities.Sleeper;
 import core.utilities.UploadUtils;
+import org.openqa.selenium.By;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.beans.Visibility;
@@ -16,14 +18,15 @@ import static consensus.components.Initializer.leftMenuMain;
 
 public class CreateAdvancedDemoTest extends BaseTest {
 
-    private String demoNameADV = "SS AB ADV 11 06 AUTOMATED #1 Helix";
+    private String demoNameADV = "SS AB ADV 28 06 AUTOMATED #2";
     private String pathToVideo = "C:\\Users\\user\\Pictures\\videos\\2mb0013.mp4";
     private String pathToLogo = "C:\\Users\\user\\Pictures\\Saved Pictures\\png.png";
     private String pathToFavicon = "C:\\Users\\user\\Pictures\\Saved Pictures\\png.png";
     private String questionADV = "Question";
     private String answer1 = "STD";
     private String answer2 = "SNGL";
-    private String selectedDemoFor1Answer = "SS AB standard 06 06 Helix";
+    private String nameDemoFor1Answer = "SS AB STD 06 06 AUTOMATED #1";
+    private String nameDemoFor2Answer = "SS AB NEW SNGL 29 06 #2";
 
     @Test
     public void createAdvancedDemoTest() {
@@ -50,11 +53,20 @@ public class CreateAdvancedDemoTest extends BaseTest {
         Initializer.createAdvancedDemo.QuestionADVFieldINPUT.sendKeys(questionADV);
         Initializer.createAdvancedDemo.AnswerADV1_Input.sendKeys(answer1);
         Initializer.createAdvancedDemo.AnswerADV2_Input.sendKeys(answer2);
-        Initializer.createAdvancedDemo.selectDemoFor1AnswerADV(selectedDemoFor1Answer);
-
+        Initializer.createAdvancedDemo.selectDemoFor1AnswerADV(nameDemoFor1Answer);
+        Initializer.createAdvancedDemo.selectDemoFor2AnswerADV(nameDemoFor2Answer);
+        Initializer.createSingleDemo.clickContinue();
+        Initializer.createAdvancedDemo.PreviewADV_Page.shouldBe(Condition.visible);
+        Initializer.createAdvancedDemo.AdvSaveExit_BTN.click();
+        Initializer.manageDemos.MANAGE_DEMOS_PAGE.waitUntil(Condition.visible, 10000);
+        Initializer.manageDemos.SearchAdvancedDemoInput.waitUntil(Condition.visible, 10000);
+        Initializer.manageDemos.findAdvancedIngoDemo(demoNameADV);
 
     }
-
+    @AfterTest
+    public void after() {
+         Initializer.logOutPopup.logOut();
+      }
 
 }
 

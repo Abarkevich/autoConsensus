@@ -20,13 +20,14 @@ public class SendDemo extends Component {
     public static final SelenideElement ADD_NEW_RECIPIENT_BTN = $(By.xpath("//button[@class='btn primary new_recipient']")); //уточнить у Димы: если добавить +1 реципиент, то появляется 2-я кнопка ADD и тогда локатор становится не уникальным
     public static final SelenideElement DELETE_NEW_RECIPIENT_BTN = $(By.xpath("//button[@id='2_delete']"));
     public static final SelenideElement DropDownListDemoBTN = $(By.xpath("//a[@class='chzn-single']"));
-    public static final SelenideElement DemoFromDropDownLInput = $(By.xpath("//div[@class='demo-dropdown']//div[@class='chzn-search']"));
+    public static final SelenideElement DemoFromDropDownLInput = $(By.xpath("//div[@class='demo-dropdown']//ul[@class='chzn-results']"));
+
     public static final SelenideElement CreateSalesLinkBTN = $(By.xpath("//input[@id='get_thelink']"));
     public static final SelenideElement GetSalesLinkBTN = $(By.xpath("//a[@id='btn_getlink']"));
     public static final SelenideElement GetSalesLinkPopUP = $(By.xpath("//div[@id ='dch_got_link']"));
     public static final SelenideElement SalesLinkInput = $(By.xpath("//input[@id='link_input']"));
     public static final SelenideElement GetSalesLinkPopUPCloseBTN = $(By.xpath("//button[@id='dch_close_got_link']"));
-
+    public static final SelenideElement SelectDemoDropDown_BTN = $(By.xpath("//div[@id='s1_demo_chzn']"));
 
     public void SendDemoViaCreatedDemo(String organizationName, String recipientEmail, String firstName, String lastName, String titleName) {
         Initializer.sendDemo.TitleSendDemoPage.shouldBe(Condition.visible);
@@ -53,7 +54,7 @@ public class SendDemo extends Component {
         Initializer.sendDemo.FieldTitleNameInput.sendKeys(titleName);
         Initializer.sendDemo.DropDownListDemoBTN.click();
         Initializer.sendDemo.DemoFromDropDownLInput.sendKeys(demoName);
-        //SelenideElement elem = $(By.xpath("//div[@class='demo-dropdown' and contains(.,'"+ demoName +"')]"));
+       // SelenideElement elem = $(By.xpath("//div[@class='demo-dropdown' and contains(.,'"+ demoName +"')]"));
         //elem.isSelected();
         Initializer.sendDemo.CreateSalesLinkBTN.parent().click();
         Initializer.sendDemo.GetSalesLinkBTN.click();
@@ -61,6 +62,12 @@ public class SendDemo extends Component {
         Initializer.sendDemo.SalesLinkInput.getAttribute("value");
         Initializer.sendDemo.GetSalesLinkPopUPCloseBTN.click();
         Sleeper.sleepInSeconds(3);
+    }
+
+    public void selectDemoForSend (String demoName){
+        Initializer.sendDemo.SelectDemoDropDown_BTN.click();
+        Initializer.sendDemo.DemoFromDropDownLInput.shouldBe(Condition.visible);
+        Initializer.sendDemo.DemoFromDropDownLInput.findElement(By.xpath(".//li[contains(.,'" + demoName + "')]")).click();
     }
 
 }

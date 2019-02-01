@@ -112,9 +112,4 @@ public class CreateStandardDemoTest extends BaseTest {
 
 
     }
-
-    @AfterTest
-    public void after() {
-        Initializer.logOutPopup.logOut();
-    }
 }

@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class ExampleTest extends BaseTest{
     @Test
     public void test(){
-        Initializer.loginPage.login("anna.barkevich@spiralscout.com", "Password_01");
+        Initializer.loginPage.login("anna.barkevich@spiralscout.com", "Password_07!!");
         Sleeper.sleepInSeconds(3);
         Initializer.logOutPopup.logOut();
     }

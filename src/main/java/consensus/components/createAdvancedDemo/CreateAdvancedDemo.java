@@ -2,6 +2,7 @@ package consensus.components.createAdvancedDemo;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import consensus.components.Initializer;
 import core.components.Component;
 import core.utilities.Sleeper;
 import org.openqa.selenium.By;
@@ -26,10 +27,14 @@ public class CreateAdvancedDemo extends Component {
 
     public static final SelenideElement ANSWER_1_DEMO_DROPDOWN_LIST_BTN = $(By.xpath("//div[@class='answerdemo-dropdown'][1]"));
     public static final SelenideElement SelectDemoFor1AnswerADV_INPUT = $(By.xpath("//div[@class='chzn-search']//input[1]"));
-    public static final SelenideElement ListDemoADVAnswer1 = $(By.xpath("//ul[@class='chzn-results'][1]"));
+    public static final SelenideElement ListDemoADVAnswer1 = $(By.xpath("//div[@id='answerdemo1_chzn']"));
+    public static final SelenideElement DropDownAdvAnswer1 = $(By.xpath("//div[@class='chzn-drop']//ul[@class='chzn-results'][1]"));
+    public static final SelenideElement SelectDemoFAnswer2 = $(By.xpath("//div[@id='answerdemo2_chzn']"));
+    public static final SelenideElement DropDownAdvAnswer2 = $(By.xpath("//div[@id='answerdemo2_chzn']//ul[@class='chzn-results']"));
+    public static final SelenideElement PreviewADV_Page = $(By.xpath("//h3[contains(text(), 'Preview')]"));
+    public static final SelenideElement AdvSaveExit_BTN = $(By.xpath("//div[@class='pull-left']//a[@class='btn']"));
 
-    public static final SelenideElement ANSWER_2_DEMO_DROPDOWN_LIST_BTN = $(By.xpath("//div[@id='answerdemo2_chzn']"));
-    public static final SelenideElement ANSWER_3_DEMO_DROPDOWN_LIST_BTN = $(By.xpath("//div[@id='answerdemo3_chzn']"));
+
     public static final SelenideElement ADD_NEW_ANSWER_FOR_ADV_DEMO_BTN = $(By.xpath("//a[@id='add-answer']"));
     public static final SelenideElement DELETE_ANSWER_FROM_ADV_DEMO_BTN = $(By.xpath("//input[@id='idanswer3']"));
     public static final SelenideElement ADV_CONTINUE_BTN = $(By.xpath("//a[@id='continue']"));
@@ -39,12 +44,16 @@ public class CreateAdvancedDemo extends Component {
 
 
     public void selectDemoFor1AnswerADV(String demoName) {
-        ANSWER_1_DEMO_DROPDOWN_LIST_BTN.click();
-        SelectDemoFor1AnswerADV_INPUT.sendKeys(demoName);
-        Sleeper.sleepInSeconds(5);
-        ListDemoADVAnswer1.$(By.xpath(".//li[contains(.,'"+ demoName +"')]")).click();
-
-
-
+        Initializer.createAdvancedDemo.ListDemoADVAnswer1.click();
+        Initializer.createAdvancedDemo.DropDownAdvAnswer1.shouldBe(Condition.visible);
+        Initializer.createAdvancedDemo.DropDownAdvAnswer1.findElement(By.xpath(".//li[contains(.,'" + demoName + "')]")).click();
     }
+
+    public void selectDemoFor2AnswerADV(String demoName) {
+        Initializer.createAdvancedDemo.SelectDemoFAnswer2.click();
+        Initializer.createAdvancedDemo.DropDownAdvAnswer2.shouldBe(Condition.visible);
+        Initializer.createAdvancedDemo.DropDownAdvAnswer2.findElement(By.xpath(".//li[contains(.,'" + demoName + "')]")).click();
+    }
+
+
 }

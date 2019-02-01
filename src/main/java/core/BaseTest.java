@@ -44,20 +44,24 @@ public class BaseTest {
         LOG.log(Level.INFO, "{0}.{1} has finished with status \"{2}\"",
                 new Object[]{tr.getTestClass().getName(), tr.getName(), testStatus});
         LOG.log(Level.INFO, "===================================================================================================================");
-        String screenshot  = null;
+        String screenshot = null;
 
 
-        int res = tr.getStatus() == ITestResult.SUCCESS  ? 1 : tr.getStatus() == ITestResult.FAILURE ? 0 : tr.getStatus() == ITestResult.SKIP ? 2 : 4;
+        int res = tr.getStatus() == ITestResult.SUCCESS ? 1 : tr.getStatus() == ITestResult.FAILURE ? 0 : tr.getStatus() == ITestResult.SKIP ? 2 : 4;
         //if (Boolean.valueOf(Configurator.getProperty(ConfigProperties.REPORT_TO_DB, "false"))) {
         long time = tr.getEndMillis() - tr.getStartMillis();
         if (tr.getStatus() == ITestResult.FAILURE && doEnableBrowser(method)) {
-            screenshot = ((TakesScreenshot)WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BASE64);
+            screenshot = ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BASE64);
             // tr.setAttribute("failure.screenshot.path", screenshot.substring(screenshot.indexOf("screenshots")));
         }
 
         //}
 
-        if (shouldCloseBrowser(method)) WebDriverRunner.closeWebDriver();
+        if (WebDriverRunner.hasWebDriverStarted() & shouldCloseBrowser(method)) {
+            WebDriverRunner.getWebDriver().close();
+            WebDriverRunner.getWebDriver().quit();
+
+        }
     }
 
     @AfterClass(alwaysRun = true)

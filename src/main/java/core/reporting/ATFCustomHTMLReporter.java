@@ -85,7 +85,7 @@ public class ATFCustomHTMLReporter extends AbstractReporter {
         File outputDirectory = new File(outputDirectoryName, REPORT_DIRECTORY);
         outputDirectory.mkdirs();
 
-        try {
+       /* try {
             if (useFrames) {
                 createFrameset(outputDirectory);
             }
@@ -99,7 +99,7 @@ public class ATFCustomHTMLReporter extends AbstractReporter {
             copyResources(outputDirectory);
         } catch (Exception ex) {
             throw new ReportNGException("Failed generating HTML report.", ex);
-        }
+        }*/
     }
 
 

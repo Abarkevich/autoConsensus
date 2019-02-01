@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ManageDemos extends Component {
-    public static final SelenideElement MANAGE_DEMOS_PAGE = $(By.xpath("//h3[contains(., 'Manage Demos')]"));
+    public static final SelenideElement MANAGE_DEMOS_PAGE = $(By.xpath("//a[@id='btn-manage-organization-demos']"));
     public static final SelenideElement MANAGE_DEMOS_PREVIEW_BTN = $(By.xpath("//a[contains(text(), 'Preview')]"));
     public static final SelenideElement MANAGE_DEMOS_COPY_BTN = $(By.xpath("//a[contains(text(), 'Copy')]"));
     public static final SelenideElement MANAGE_DEMOS_SEND_BTN = $(By.xpath("//a[contains(text(), 'Send Demo')]"));
@@ -25,6 +25,9 @@ public class ManageDemos extends Component {
     public static final SelenideElement TableStandardInfo = $(By.xpath("//table[@aria-describedby='table_demos_info']"));
     public static final SelenideElement AlertDeleteStandardDemo = $(By.xpath("//div[@id='standard-demo-alert-box']"));
 
+    public static final SelenideElement SearchAdvancedDemoInput = $(By.xpath("//div[@id='table_advanced_demos_filter']//input[@type='search']"));
+    public static final SelenideElement TableAdvancedInfo = $(By.xpath("//table[@aria-describedby='table_advanced_demos_info']"));
+
     public void findSingleInfoDemo (String demoName){
         SEARCH_SINGLE_INPUT.shouldBe(Condition.visible);
         SEARCH_SINGLE_INPUT.sendKeys(demoName);
@@ -35,6 +38,12 @@ public class ManageDemos extends Component {
         SearchStandardDemoInput.shouldBe(Condition.visible);
         SearchStandardDemoInput.sendKeys(demoName);
         TableStandardInfo.$(By.xpath(".//tbody/tr")).shouldHave(text(demoName));
+    }
+
+    public void findAdvancedIngoDemo(String demoName){
+        SearchAdvancedDemoInput.shouldBe(visible);
+        SearchAdvancedDemoInput.sendKeys(demoName);
+        TableAdvancedInfo.$(By.xpath(".//tbody/tr")).shouldHave(text(demoName));
     }
 
     public void findAndDeleteSingleDemo (String demoName){

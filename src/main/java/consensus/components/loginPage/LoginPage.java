@@ -1,5 +1,6 @@
 package consensus.components.loginPage;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import core.components.Component;
 import org.openqa.selenium.By;
@@ -21,7 +22,7 @@ public class LoginPage extends Component{
 
 
     public void login(String username, String password){
-        open("https://helix.goconsensus.com/app/"); // https://www.goconsensus.com/app ПРОД ЛИНК
+        open("https://new.goconsensus.com/app"); // https://www.goconsensus.com/app ПРОД ЛИНК
         waitUntilLoaded();
         USERNAME.sendKeys(username);
         PASSWORD.sendKeys(password);

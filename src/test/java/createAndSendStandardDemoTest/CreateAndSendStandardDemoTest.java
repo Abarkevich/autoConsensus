@@ -107,5 +107,6 @@ public class CreateAndSendStandardDemoTest extends BaseTest {
         Sleeper.sleepInSeconds(1);
         Initializer.createSingleDemo.SendSingleDemo_BTN.click();
         Initializer.sendDemo.SendDemoViaCreatedDemo(orgName, recEmail, firstRecName, lastRecName, titleRec);
+        Initializer.trackDemosSentPage.findSendFirstTimeDemoByName(demoNameStd);
     }
 }
